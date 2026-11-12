@@ -1,0 +1,131 @@
+:root {
+  --page: #f5f5f5;
+  --surface: #fff;
+  --primary: #3370ff;
+  --select-fill: #f5fafd;
+  --select-border: #d5e3ff;
+  --secondary: #e6f3fd;
+  --success: #31ce40;
+  --ink: #000;
+  --muted: rgb(0 0 0 / 50%);
+  --panel-radius: 12px;
+  --control-radius: 6px;
+  --header-shadow: 0 2px 13.8px 0 rgb(0 0 0 / 8%);
+  --font: 'PingFang SC', 'Noto Sans CJK SC', sans-serif;
+  --panel-padding: 14px;
+  --section-gap: 10px;
+}
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
+body { font-family: var(--font); color: var(--ink); background: var(--page); }
+.screen { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--page); }
+.header { position: absolute; left: 0; top: 0; width: 1920px; height: 72px; background: var(--surface); box-shadow: var(--header-shadow); }
+.navigation { position: absolute; left: 0; top: 72px; width: 70px; height: 1008px; background: var(--surface); }
+.panel { position: absolute; background: var(--surface); border-radius: var(--panel-radius); }
+.progress { left: 88px; top: 90px; width: 1408px; height: 158px; }
+.camera-view { left: 88px; top: 258px; width: 1408px; height: 804px; }
+.camera-selection { left: 1506px; top: 90px; width: 396px; height: 158px; }
+.calibration { left: 1506px; top: 258px; width: 396px; height: 558px; }
+.step-navigation { position: absolute; left: 1506px; top: 846px; width: 396px; height: 36px; }
+.asset { position: absolute; display: block; max-width: none; }
+.text { position: absolute; margin: 0; font-weight: 400; font-style: normal; letter-spacing: 0; white-space: nowrap; }
+.text[style*="width"] { white-space: normal; overflow-wrap: break-word; }
+.text-12 { font-size: 12px; line-height: 17px; }
+.text-14 { font-size: 14px; line-height: 20px; }
+.text-16 { font-size: 16px; line-height: 22px; }
+.text-18 { font-size: 18px; line-height: 25px; }
+.text-20 { font-size: 20px; line-height: 28px; }
+.medium { font-weight: 500; }
+.muted { color: var(--muted); }
+.ink-80 { color: rgb(0 0 0 / 80%); }
+.ink-90 { color: rgb(0 0 0 / 90%); }
+.blue { color: var(--primary); }
+.white { color: var(--surface); }
+.center { text-align: center; transform: translateX(-50%); }
+.box { position: absolute; }
+.select { background: var(--select-fill); border: 1px solid var(--select-border); border-radius: 8px; }
+.primary, .title-marker, .navigation-selected { background: var(--primary); }
+.primary, .secondary, .outline, .success, .field { border-radius: var(--control-radius); }
+.title-marker { border-radius: 1px; }
+.secondary { background: var(--secondary); border: 1px solid var(--select-border); }
+.outline { border: 1px solid var(--primary); }
+.success { background: var(--success); }
+.field { border: 1px solid rgb(0 0 0 / 10%); background: var(--surface); }
+.divider { background: rgb(0 0 0 / 8%); border-radius: 4px; }
+.navigation-selected { border-radius: 10px; }
+.progress-track { background: rgb(213 227 255 / 70%); border-radius: 18px; }
+.control-label { position: absolute; overflow: clip; }
+.previous { border-color: rgb(51 112 255 / 90%); }
+.previous-text { color: rgb(51 112 255 / 90%); }
+.equals { position: absolute; display: flex; flex-direction: column; justify-content: space-between; }
+.equals i { display: block; width: 10px; height: 1px; background: #333; border-radius: 2px; }
+
+/* Keep the original 16:9 composition and fit it inside the current viewport. */
+.demo-viewport { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.demo-fit { position: relative; flex: none; }
+.demo-canvas { width: 1920px; height: 1080px; transform-origin: top left; }
+
+/* Extend layout surfaces to the actual aspect ratio; never stretch text or media. */
+.screen { width: 100%; height: 100%; --image-width: calc(1368px + var(--extra-width, 0px)); --image-height: calc(724px + var(--extra-height, 0px)); }
+.header { width: 100%; }
+.navigation { height: calc(100% - 72px); }
+
+.progress, .camera-view { width: calc(1408px + var(--extra-width, 0px)); }
+.camera-view { height: calc(804px + var(--extra-height, 0px)); }
+.camera-selection, .calibration, .step-navigation, .image-controls, .reference-panel, .camera-settings, .login-panel { left: calc(1506px + var(--extra-width, 0px)); }
+.camera-empty { width: calc(1368px + var(--extra-width, 0px)) !important; height: calc(724px + var(--extra-height, 0px)) !important; }
+.camera-view > img[src$="imgCameraOff.svg"] { left: calc(631px + var(--extra-width, 0px) / 2) !important; top: calc(349px + var(--extra-height, 0px) / 2) !important; }
+.camera-view > img[src$="imgImageCalibration.png"], .camera-view > img[src$="imgRectangle293.png"] { width: var(--image-width) !important; height: var(--image-height) !important; object-fit: cover; border-radius: 14px; left: calc(20px + (1368px + var(--extra-width, 0px) - var(--image-width)) / 2) !important; top: calc(60px + (724px + var(--extra-height, 0px) - var(--image-height)) / 2) !important; }
+.mark-surface { width: var(--image-width); height: var(--image-height); left: calc(108px + (1368px + var(--extra-width, 0px) - var(--image-width)) / 2); top: calc(318px + (724px + var(--extra-height, 0px) - var(--image-height)) / 2); }
+.mark-surface svg { width: 100%; height: 100%; }
+.assistant-hint { top: calc(954px + var(--extra-height, 0px)); }
+.assistant-full { width: calc(1850px + var(--extra-width, 0px)); height: calc(1008px + var(--extra-height, 0px)); }
+.assistant-history, .assistant-full-panel { height: calc(972px + var(--extra-height, 0px)); }
+.assistant-full-panel { width: calc(1530px + var(--extra-width, 0px)); }
+.assistant-full-panel.history-collapsed { width: calc(1814px + var(--extra-width, 0px)); }
+
+/* Match the two login cards, including the taller validation state. */
+.screen[data-stage="login"] { --login-progress-extra: 50px; }
+.screen[data-stage="login"]:has(.login-error) { --login-progress-extra: 76px; }
+.screen[data-stage="login"] .progress { height: calc(158px + var(--login-progress-extra)); }
+.screen[data-stage="login"] .camera-view { top: calc(258px + var(--login-progress-extra)); height: calc(804px + var(--extra-height, 0px) - var(--login-progress-extra)); }
+.screen[data-stage="login"] .camera-empty { height: calc(724px + var(--extra-height, 0px) - var(--login-progress-extra)) !important; }
+.screen[data-stage="login"] .camera-view > img[src$="imgCameraOff.svg"] { top: calc(349px + (var(--extra-height, 0px) - var(--login-progress-extra)) / 2) !important; }
+
+/* Progress content shares the card's available width and height. */
+.progress { display: flex; flex-direction: column; padding: 20px; }
+.progress-heading { display: flex; align-items: center; gap: 18px; height: 40px; flex: none; }
+.progress-heading h2 { width: 120px; margin: 0; color: rgb(0 0 0 / 90%); font-size: 20px; line-height: 28px; font-weight: 500; white-space: nowrap; }
+.progress-project { display: flex; align-items: center; justify-content: space-between; width: 236px; height: 40px; padding: 0 14px; color: rgb(0 0 0 / 80%); font-size: 18px; line-height: 25px; }
+.progress-flow { flex: 1; min-height: 0; display: flex; align-items: center; padding-top: 14px; }
+.progress-steps { position: relative; display: flex; justify-content: space-between; width: 100%; height: 64px; }
+.progress-line { position: absolute; left: 28px; right: 28px; top: 14px; height: 12px; border-radius: 18px; background: rgb(213 227 255 / 70%); overflow: hidden; }
+.progress-fill { height: 100%; border-radius: inherit; background: var(--primary); }
+.progress-node { position: relative; width: 56px; height: 64px; flex: none; }
+.progress-dot { position: relative; width: 40px; height: 40px; margin: 0 auto; }
+.progress-label { position: absolute; top: 44px; left: 50%; transform: translateX(-50%); font-size: 14px; line-height: 20px; white-space: nowrap; }
+.progress-percentage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; line-height: 17px; color: var(--primary); }
+
+/* Original Figma navigation: hover reveals the edge handle. */
+.navigation { z-index: 41; }
+.navigation-expanded { width: 222px; }
+.navigation-expanded .navigation-selected { background: linear-gradient(90deg, #3370ff, #4a80ff); }
+.ink-60 { color: rgb(0 0 0 / 60%); }
+.navigation-ai-entry { position: absolute; left: 16px; bottom: 32px; width: 38px; height: 38px; }
+.navigation-expanded .navigation-ai-entry { width: 190px; }
+.navigation-toggle { position: absolute; right: -10px; top: calc(50% - 37px); z-index: 1; width: 20px; height: 74px; padding: 0; border: 0; background: transparent; cursor: pointer; opacity: 0; pointer-events: none; }
+.navigation-toggle img { display: block; width: 20px; height: 74px; }
+.navigation:not(.navigation-expanded) .navigation-toggle img { transform: scaleX(-1); }
+.navigation:hover .navigation-toggle, .navigation-toggle:focus-visible { opacity: 1; pointer-events: auto; }
+.navigation-toggle:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.screen[data-navigation-expanded="true"] .progress, .screen[data-navigation-expanded="true"] .camera-view { left: 240px; width: calc(1256px + var(--extra-width, 0px)); }
+.screen[data-navigation-expanded="true"] { --image-width: calc(1216px + var(--extra-width, 0px)); }
+.screen[data-navigation-expanded="true"] .camera-empty { width: var(--image-width) !important; }
+.screen[data-navigation-expanded="true"] .camera-view > img[src$="imgImageCalibration.png"], .screen[data-navigation-expanded="true"] .camera-view > img[src$="imgRectangle293.png"] { left: 20px !important; }
+.screen[data-navigation-expanded="true"] .camera-view > img[src$="imgCameraOff.svg"] { left: calc(555px + var(--extra-width, 0px) / 2) !important; }
+.screen[data-navigation-expanded="true"] .mark-surface { left: 260px; }
+.screen[data-navigation-expanded="true"] .assistant-full { left: 222px; width: calc(1698px + var(--extra-width, 0px)); }
+.screen[data-navigation-expanded="true"] .assistant-full-panel { width: calc(1378px + var(--extra-width, 0px)); }
+.screen[data-navigation-expanded="true"] .assistant-full-panel.history-collapsed { width: calc(1662px + var(--extra-width, 0px)); }
+.assistant-hint { z-index: 46; }
+.screen[data-navigation-expanded="true"] .assistant-hint { left: 197px; }

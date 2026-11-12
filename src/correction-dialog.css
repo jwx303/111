@@ -1,0 +1,12 @@
+.correction-dialog { margin: auto; max-width: none; max-height: none; padding: 0; border: 0; border-radius: 10px; overflow: hidden; background: white; color: var(--ink); }
+.correction-dialog::backdrop { background: rgb(0 0 0 / 45%); }
+.correction-content { position: relative; width: 1062px; height: 656px; transform-origin: top left; font-family: var(--font); }
+.correction-content .text { line-height: normal; }
+.correction-content .text-26 { font-size: 26px; }
+.correction-reasons { border-radius: 8px; background: #f3f7fd; }
+.correction-row { border-radius: 6px; background: white; }
+.correction-content .ink-60 { color: rgb(0 0 0 / 60%); }
+.correction-report, .correction-acknowledge { position: absolute; padding: 0; border-radius: 6px; font: 20px/28px var(--font); cursor: pointer; }
+.correction-report { color: rgb(51 112 255 / 90%); border: 1px solid currentColor; background: transparent; }
+.correction-acknowledge { color: white; border: 0; background: var(--primary); font-weight: 500; }
+.correction-report:focus-visible, .correction-acknowledge:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }

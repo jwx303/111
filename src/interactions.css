@@ -1,0 +1,50 @@
+.hit-target { position: absolute; border: 0; border-radius: 6px; background: transparent; padding: 0; margin: 0; cursor: pointer; color: inherit; font: inherit; }
+.hit-target:focus-visible, .parameter-input:focus-visible, .camera-setting-select:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.hit-target:disabled { cursor: not-allowed; }
+.next-unavailable { opacity: .45; }
+.parameter-input { position: absolute; border: 0; background: transparent; padding: 5px 0; margin: 0; font-family: var(--font); font-size: 14px; font-weight: 500; line-height: 20px; color: #000; text-align: center; }
+.parameter-input::placeholder { font-size: 14px; color: rgb(0 0 0 / 40%); font-weight: 400; }
+.calibration.calibration-pending { height: 504px; }
+.dropdown-anchor { position: absolute; }
+.dropdown-open { z-index: 30; }
+.dropdown-menu { position: absolute; top: 44px; left: 0; width: 100%; padding: 4px; border: 1px solid var(--select-border); border-radius: 8px; background: white; box-shadow: 0 4px 16px rgb(0 0 0 / 12%); }
+.dropdown-menu button { display: block; width: 100%; padding: 10px; border: 0; border-radius: 4px; background: var(--select-fill); text-align: left; color: var(--primary); font: 14px/20px var(--font); cursor: pointer; }
+.image-controls { left: 1506px; top: 258px; width: 396px; }
+.reference-panel { left: 1506px; width: 396px; height: 270px; }
+.camera-settings { left: 1506px; top: 90px; width: 396px; height: 531px; }
+.camera-empty { background: #f1f5fa; border-radius: 14px; }
+.camera-setting-field { background: white; border: 1px solid var(--select-border); border-radius: 8px; }
+.camera-setting-select { position: absolute; appearance: none; border: 0; background: transparent; padding: 10px 35px 10px 16px; font: 14px/20px var(--font); color: rgb(0 0 0 / 80%); cursor: pointer; }
+.green { color: var(--success); }
+.red { color: #fd3232; }
+.mark-surface { position: absolute; left: 108px; top: 318px; width: 1368px; height: 724px; pointer-events: none; border-radius: 14px; overflow: hidden; }
+.mark-surface.marking { pointer-events: auto; cursor: crosshair; }
+.mark-surface svg { display: block; overflow: hidden; pointer-events: none; }
+.mark-surface circle { stroke: white; stroke-width: 2px; fill: var(--primary); }
+.mark-surface path, .mark-surface polyline { fill: none; stroke: var(--primary); stroke-width: 2px; }
+.mark-surface text { fill: var(--primary); stroke: white; stroke-width: 3px; paint-order: stroke; font: 16px var(--font); }
+.demo-toast { position: absolute; z-index: 50; top: 24px; left: 960px; transform: translateX(-50%); max-width: 760px; padding: 12px 20px; border: 1px solid var(--select-border); border-radius: 8px; background: white; box-shadow: var(--header-shadow); font: 16px/24px var(--font); }
+.reference-dialog { border: 1px solid var(--select-border); border-radius: 12px; background: white; padding: 40px 24px 24px; width: 1148px; max-width: calc(100vw - 32px); max-height: calc(100dvh - 32px); }
+.reference-dialog::backdrop { background: rgb(0 0 0 / 45%); }
+.reference-dialog > div { position: relative; }
+.dialog-close { position: absolute; right: 0; top: -40px; width: 40px; height: 40px; padding: 8px; border: 0; border-radius: 4px; background: transparent; cursor: pointer; }
+.reference-large { display: block; width: 100%; height: auto; max-height: calc(100dvh - 100px); object-fit: contain; }
+.login-panel { left: 1506px; top: 90px; width: 396px; height: 208px; }
+.login-panel.login-error { height: 234px; }
+.login-label { position: absolute; font: 500 16px/22px var(--font); }
+.login-input { position: absolute; border: 0; border-radius: 8px; background: transparent; padding: 10px 14px; margin: 0; color: rgb(0 0 0 / 80%); font: 14px/20px var(--font); }
+.login-input::placeholder { color: rgb(0 0 0 / 80%); opacity: 1; }
+.login-submit { position: absolute; border: 0; border-radius: 6px; background: var(--primary); color: white; padding: 7px 0; font: 16px/22px var(--font); cursor: pointer; }
+.login-input:focus-visible, .login-submit:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.login-validation { position: absolute; margin: 0; color: #fd3232; font: 14px/20px var(--font); }
+
+.correction-failure { position: absolute; margin: 0; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.correction-failure:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+.step-navigation { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.wizard-step { width: 100%; min-width: 0; height: 36px; margin: 0; padding: 0; border-radius: var(--control-radius); font: 16px/22px var(--font); cursor: pointer; }
+.wizard-previous { border: 1px solid rgb(51 112 255 / 90%); color: rgb(51 112 255 / 90%); background: transparent; }
+.wizard-next { border: 0; background: var(--primary); color: white; }
+.wizard-next:only-child { grid-column: 2; }
+.wizard-next:disabled { opacity: .45; cursor: not-allowed; }
+.wizard-step:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
